@@ -139,8 +139,17 @@ public:
 
     // Function to find the center of a star graph
     int findCenterOfStar(const Graph& g) {
-        //TODO: implement this function
-        return -1; //TODO: change this to return the center node value
+        vector<pair<int,int>> edges = g.getEdges();
+        if(edges.size() < 2){
+            return -1; // Not enough edges to determine a center
+        }
+        if(edges[0].first == edges[1].first || edges[0].first == edges[1].second){
+            return edges[0].first;
+        }
+        if(edges[0].second == edges[1].first || edges[0].second == edges[1].second){
+            return edges[0].second;
+        }
+        return -1; 
     }
 };
 
